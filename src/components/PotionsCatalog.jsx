@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Pagination from "@mui/material/Pagination";
-import PotionModal from "./PotionModal";
 import CircularProgress from "@mui/material/CircularProgress";
+import PotionCard from "./PotionCard";
 const PotionsCatalog = () => {
   const [allPotions, setAllPotions] = useState([]);
   const [potions, setPotions] = useState([]);
@@ -97,25 +97,7 @@ const PotionsCatalog = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {potions.map((item, index) => (
-          <div
-            key={index}
-            className="border-2 border-gray-300 rounded-md p-4 flex flex-col"
-          >
-            <img
-              src={item.attributes.image}
-              alt={item.attributes.name}
-              className="w-full h-64 object-cover"
-            />
-            <h2 className="text-xl font-bold">{item.attributes.name}</h2>
-            <p className="text-sm">{item.attributes.description}</p>
-            <p className="text-sm">Difficulty: {item.attributes.difficulty}</p>
-            <p className="text-sm">
-              Characteristic: {item.attributes.characteristics}
-            </p>
-            <div className="mt-auto self-end">
-              <PotionModal item={item} />
-            </div>
-          </div>
+       <PotionCard item={item} key={index} />
         ))}
       </div>
 
